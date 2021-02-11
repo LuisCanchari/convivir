@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Cambio de divisas</title>
+</head>
+<body>
+	<h1>Datos para la conversion de divisas</h1>
+	
+	<form action="/divisa" method="post">
+		<label for="listaMonedaOrigen">Moneda Origen</label> </br>
+		<select name="origen" id="listaMonedaOrigen">
+			<option th:each="moneda:${monedas}"
+					th:value="${moneda.codigoISO}"
+					th:text="${moneda.descripcion}+' ['+${moneda.pais}+']'">texto</option>
+		</select>
+		
+		 <br>
+		<label for="listaMonedaDestino">Moneda Destino</label> </br>
+		<select name="destino" id="listaMonedaOrigen">
+			<option th:each="moneda:${monedas}"
+					th:value="${moneda.codigoISO}"
+					th:text="${moneda.descripcion}+' ['+${moneda.pais}+']'">texto</option>
+		</select> 
+		 </br> 
+		<label for="monto">Monto</label> </br> 
+		<input id="monto" name="monto" type="decimal" step="any" /> 
+		<input name="procesar"
+			type="submit" value="procesar">
+	</form>
+	
+</body>
+</html>

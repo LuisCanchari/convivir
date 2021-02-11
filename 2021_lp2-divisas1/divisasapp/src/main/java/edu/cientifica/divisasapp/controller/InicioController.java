@@ -15,20 +15,16 @@ import edu.cientifica.divisasapp.services.Conversor;
 @RequestMapping(value = "/")
 public class InicioController {
 	
-	@Autowired
+	@Autowired //Inyecccion de dependencia
 	Conversor conversor;
 	
-	
-	@GetMapping(value = "/inicio")
-	public String inicio() {
-		
-		return "inicio";
-	}
 	
 	@GetMapping(value = "/divisa")
 	public String divisa(Model model) {
 		model.addAttribute("monedas", conversor.listaMoneda());
+		
 		return "divisa_form";
+		
 	}
 	
 	@PostMapping(value = "/divisa")
@@ -41,8 +37,6 @@ public class InicioController {
 		resultado = String.valueOf(conversor.convertir(origen,destino,cantidad));
 		
 		model.addAttribute("resultado", resultado);
-		model.addAttribute("monedaOrigen", conversor.getMonedaOrigen());
-		model.addAttribute("monedaDestino", conversor.getMonedaDestino());
 		return "divisa_result";
 	}
 	

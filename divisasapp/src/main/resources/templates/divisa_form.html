@@ -10,27 +10,33 @@
 		<label for="listaMonedaOrigen">Moneda Origen</label> </br> 
 		<select
 			name="origen" id="listaMonedaOrigen">
-			<!-- 
+			 
 			<option th:each="moneda : ${monedas}"
 					th:value="${moneda.codigoISO}"
-					th:text="${moneda.descripcion}"
+					th:text="${moneda.descripcion } +' ['+${moneda.pais}+']' "
 					>
-			 -->
 			 
+			<!-- 
 			<option value="PEN">Soles</option>
 			<option value="USD">Dolar</option>
 			<option value="EUR">Euro</option>
 			<option value="MXN">Peso Mexicano</option>
-			
+			-->
 
 		</select> </br> 
 		<label for="listaMonedaDestino">Moneda Origen</label> </br> 
 		<select
 			name="destino" id="listaMonedaDestino">
+			<option th:each="moneda : ${monedas}"
+					th:value="${moneda.codigoISO}"
+					th:text="${moneda.descripcion } +' ['+${moneda.pais}+']' "
+					>
+			<!--
 			<option value="PEN">Soles</option>
 			<option value="USD">Dolar</option>
 			<option value="EUR">Euro</option>
 			<option value="MXN">Peso Mexicano</option>
+			-->
 
 		</select> </br> <label for="monto">Moneda Origen</label> </br> <input id="monto"
 			name="monto" type="decimal" step="any" /> <input name="procesar"
